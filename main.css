@@ -1,0 +1,217 @@
+@font-face {
+  font-family: 'Iosevka Tiny Web';
+  font-display: swap;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  src: url('iosevka.ttf') format('truetype');
+}
+
+#overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: visible;
+  height: 0px;
+}
+
+#path {
+  stroke: var(--fg);
+  stroke-width: 0.25em;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: transparent;
+}
+
+:root {
+  --bg: #151515;
+  --bg2: #252525;
+  --bg3: #202020;
+  --fg: #ebdbb2;
+  --fg2: #ffffff;
+
+  font-size: 2em;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+}
+
+button {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.2em;
+  padding: 0.5em 0.7em;;
+  color: var(--fg);
+  font-size: inherit;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+
+button:active {
+  background-color: rgba(255, 255, 255, 0.15)
+}
+
+#game-wrap {
+  background-color: var(--bg3);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  padding: 0.7em;
+}
+
+#restart {
+  flex: 1;
+  background-color: #458588;
+  color: var(--bg2);
+  border-radius: 0.5em;
+}
+
+#restart:hover {
+  background-color: #4a8a8d;
+}
+
+#restart:active {
+  background-color: #529092;
+}
+
+#submit {
+  flex: 1;
+  background-color: #b8bb26;
+  color: var(--bg2);
+  transition: all 0.05s;
+  border-radius: 0.5em;
+}
+#submit:hover {
+  background-color: #c2c530;
+}
+#submit:active {
+  background-color: #d8db30;
+}
+
+#game {
+  background-color: var(--bg2);
+  padding: 1em;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  min-width: 10em;
+  min-height: 1.825em;
+  transition: 0.2s;
+  justify-content: center;
+}
+
+#summary {
+  max-height: 2em;
+  transition: 0.5s;
+  opacity: 1;
+  display: flex;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--fg);
+  max-width: 100%;
+}
+
+#summary.squished {
+  opacity: 0.5;
+  max-width: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: var(--fg);
+  user-select: none;
+  font-size: 1.4em;
+  font-family: Iosevka Tiny Web;
+  font-weight: 600;
+  transition: 0.2s;
+
+  min-height: 1.25em;
+  max-height: 1.25em;
+}
+
+.row.squished {
+  min-height: 0em;
+  max-height: 0em;
+}
+
+.bar {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-width: 1em;
+  max-width: 1em;
+  transition: 0.2s;
+}
+
+.bar:hover {
+  color: var(--fg2);
+}
+
+.bar.greyed {
+  color: #555555;
+  animation: 0.2s pop ease-out;
+}
+
+.bar.hidden {
+  animation: 0.2s hide ease-out forwards;
+}
+.bar.squished {
+  max-width: 0;
+  min-width: 0;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+@keyframes hide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
